@@ -1,0 +1,16 @@
+<b>{{countDisplay}}:</b>
+<ul>
+  {{#each item in controller}}
+    <li>{{#link-to 'things.thing' item}}<i>{{item.title}}</i> : {{item.description}}{{/link-to}}&nbsp;
+      <button {{action 'addNote' item.id target=controllers.thing}}>+</button>
+      <button {{action 'delete' item}}>X</button>
+
+      <br/>
+      {{#each note in item.notes}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{note.text}}<br/>
+      {{/each}}
+    </li>
+  {{/each}}
+  <br/>
+  {{#link-to 'things.new'}}ADD{{/link-to}}
+</ul>
